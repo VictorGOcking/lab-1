@@ -5,15 +5,10 @@ import (
 	"log"
 	"net/http"
 	"time"
+	"fmt"
 )
 
-const port = ":8795"
-
-func main() {
-	handler := http.HandlerFunc(getTime)
-	http.Handle("/time", handler)
-	http.ListenAndServe(port, nil)
-}
+const PORT = ":8795"
 
 func getTime(w http.ResponseWriter, r *http.Request) {
   w.WriteHeader(http.StatusCreated)
@@ -28,4 +23,12 @@ func getTime(w http.ResponseWriter, r *http.Request) {
 	}
 
   w.Write(jsonResp)
+}
+
+func main() {
+	handler := http.HandlerFunc(getTime)
+	http.Handle("/time", handler)
+	http.ListenAndServe(port, nil)
+
+	fmt.Println("Server is listening on the port", PORT)
 }
