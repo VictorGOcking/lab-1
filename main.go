@@ -11,24 +11,24 @@ import (
 const PORT = ":8795"
 
 func getTime(w http.ResponseWriter, r *http.Request) {
-    w.WriteHeader(http.StatusCreated)
-    w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	w.Header().Set("Content-Type", "application/json")
 
-    resp := make(map[string]string)
-    resp["time"] = time.Now().Format(time.RFC3339)
-    jsonResp, err := json.Marshal(resp)
+	resp := make(map[string]string)
+	resp["time"] = time.Now().Format(time.RFC3339)
+	jsonResp, err := json.Marshal(resp)
 
-    if err != nil {
-        log.Fatalf("Error happened in JSON marshal. Err: %s", err)
-    }
+	if err != nil {
+		log.Fatalf("Error happened in JSON marshal. Err: %s", err)
+	}
 
-    w.Write(jsonResp)
+	w.Write(jsonResp)
 }
 
 func main() {
-    handler := http.HandlerFunc(getTime)
-    http.Handle("/time", handler)
+	handler := http.HandlerFunc(getTime)
+	http.Handle("/time", handler)
 
-    fmt.Println("Server is listening on the port", PORT)
-    http.ListenAndServe(PORT, nil)
+	fmt.Println("Server is listening on the port", PORT)
+	http.ListenAndServe(PORT, nil)
 }
