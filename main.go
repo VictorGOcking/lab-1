@@ -23,5 +23,9 @@ func getTime(w http.ResponseWriter, r *http.Request) {
   resp["time"] = time.Now().Format(time.RFC3339)
   jsonResp, err := json.Marshal(resp)
 
+	if err != nil {
+		log.Fatalf("Err: %s", err)
+	}
+
   w.Write(jsonResp)
 }
