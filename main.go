@@ -24,7 +24,7 @@ func getTime(w http.ResponseWriter, r *http.Request) {
   jsonResp, err := json.Marshal(resp)
 
 	if err != nil {
-		log.Fatalf("Err: %s", err)
+		log.Fatalf("Error happened in JSON marshal. Err: %s", err)
 	}
 
   w.Write(jsonResp)
