@@ -9,7 +9,7 @@ import (
 
 func main() {
 	handler := http.HandlerFunc(getTime)
-	http.Handle("/time", handler)
+	http.Handle("/localtime", handler)
 	http.ListenAndServe(":8795", nil)
 }
 
