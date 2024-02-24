@@ -28,7 +28,7 @@ func getTime(w http.ResponseWriter, r *http.Request) {
 func main() {
 	handler := http.HandlerFunc(getTime)
 	http.Handle("/time", handler)
-	http.ListenAndServe(port, nil)
 
 	fmt.Println("Server is listening on the port", PORT)
+	http.ListenAndServe(PORT, nil)
 }
